@@ -1,4 +1,4 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose, {Schema, ObjectId} from "mongoose";
 
 const ratingSchma = new Schema({
   hotelId: {
