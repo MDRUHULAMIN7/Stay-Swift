@@ -1,9 +1,9 @@
 import mongoose, {Schema} from "mongoose";
-
+import {ObjectId} from "mongodb";
 const bookingSchema = new Schema({
   hotelId: {
     required: true,
-    type: ObjectId
+    type: ObjectId,
   },
   userId: {
     required: true,
