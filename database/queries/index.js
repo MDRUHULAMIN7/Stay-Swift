@@ -50,10 +50,20 @@ async function findBooking(hotelId, checkin, checkout) {
     return found;
   }
 
-export async function getHotelById(hotelId) {
+  export async function getHotelById(hotelId, checkin, checkout) {
     const hotel = await HotelModel.findById(hotelId).lean();
+
+    if (checkin && checkout) {
+        const found = await findBooking(hotel._id, checkin, checkout);
+        if (found) {
+            hotel["isBooked"] = true;
+        }else {
+            hotel["isBooked"] = false;
+        }
+    }
     return replaceMongoIdInObject(hotel);
 }
+
 
 export async function getRatingsForAHotel(hotelId) {
     const ratings = await RatingModel.find({hotelId: hotelId}).lean();

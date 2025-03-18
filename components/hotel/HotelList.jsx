@@ -11,8 +11,11 @@ const HotelList = async({destination, checkin, checkout}) => {
       {
           allHotels.map((hotel) =>(
             <HotelCard
-              key={hotel.id}
-              hotelInfo={hotel}/>
+                key={hotel.id}
+                hotelInfo={hotel}
+                checkin={checkin}
+                checkout={checkout}
+              />
           ))
         }
 
